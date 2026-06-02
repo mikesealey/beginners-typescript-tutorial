@@ -1,4 +1,5 @@
 import { expect, it } from "vitest";
+import { ZodLazy } from "zod";
 
 interface User {
   id: number;
@@ -17,8 +18,20 @@ interface Post {
  * How do we ensure that makeUser ALWAYS
  * returns a user?
  */
-const makeUser = () => {
-  return {};
+const makeUser = ():User => {
+  return {
+    id: 1,
+    firstName: "Mike",
+    lastName: "Sealey",
+    role: "super-admin",
+    posts: [
+      {
+        id: 1,
+        title: "Pizza is good"
+      }
+    ]
+
+  };
 };
 
 it("Should return a valid user", () => {
